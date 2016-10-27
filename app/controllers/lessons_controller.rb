@@ -1,2 +1,64 @@
 class LessonsController < ApplicationController
+	before_action :authenticate_user!
+	before_action :set_student, only: [:index, :new, :create]
+	before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+	before_action :check_permissions, except: [:index, :show]
+
+	def index
+		@lessons = @student.lessons
+	end
+
+	def show
+	end
+
+	def new
+		@lesson = Lesson.new
+	end
+
+	def create
+		@lesson = @student.lessons.new(lesson_params)
+
+		if @lesson.save
+			redirect_to lesson_path(@lesson)
+		else
+			render :new
+		end
+	end
+
+	def edit
+	end
+
+	def update
+		if @lesson.update(lesson_params)
+			redirect_to lesson_path(@lesson)
+		else
+			render :edit
+			redirect_to lesson_path(@lesson)
+		end
+	end
+
+	def destroy
+		@lesson.destroy
+
+	end
+
+	private
+
+	def set_student
+		if current_user.is_student?
+			@student = current_user
+		else
+			@student = User.find(params[:student_id])
+		end
+	end
+
+	def lesson_params
+		params.require(:lesson).permit(:date, :feedback)
+	end
+
+	def check_permissions
+		unless current_user.is_teacher?
+			redirect_to lessons_path(current_user.lessons)
+		end
+	end
 end
