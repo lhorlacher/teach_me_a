@@ -1,0 +1,14 @@
+=form_for @profile do |f|
+	.form-group
+		=f.label :instrument
+		=f.text_field :instrument, required: true, class: 'form-control'
+	.form-group
+		=f.label :age
+		=f.text_field :age, required: true, class: 'form-control'
+	.form_group
+		=f.label :gender
+		=f.text_field :gender, required: true, class: 'form-control'
+	.form_group
+		=f.label :bio
+		=f.text_area :bio, required: true, class: 'form-control'
+	=f.submit

@@ -11,4 +11,7 @@ class User < ApplicationRecord
       Lesson.where(student_id: id)
     end
 
+    def students
+    	User.where(teacher_id: current_user.id)
+    end
 end
