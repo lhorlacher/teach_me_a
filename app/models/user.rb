@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
     has_one :profile
-    validates_presence_of :teacher
 
     def lessons
       Lesson.where(student_id: id)

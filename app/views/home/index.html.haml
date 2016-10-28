@@ -1,11 +1,12 @@
 %h1 Teach Me
 - if current_user
 	-if current_user.profile
-		%button.btn.btn-danger= link_to 'View Profile', profile_path(current_user)
+		= link_to 'View Profile', profile_path(current_user), class: 'btn btn-danger'
 	-else
-		%button.btn.btn-danger= link_to 'Add Profile', new_profile_path(current_user)
-	%button.btn.btn-danger= link_to 'Sign Out', destroy_user_session_path, method: :delete
+		= link_to 'Add Profile', new_profile_path(current_user), class: 'btn btn-danger'
+	= link_to 'Sign Out', destroy_user_session_path, class: 'btn btn-danger', method: :delete
+	-if current_user.teacher
+		= link_to 'Add New Student', new_user_registration_path, class: 'btn btn-danger'
 - else
-	%button.btn.btn-danger= link_to 'Sign Up', new_user_registration_path
-	%button.btn.btn-danger= link_to 'Sign In', new_user_session_path
+	= link_to 'Sign In', new_user_session_path, class: 'btn btn-danger'
 
