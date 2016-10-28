@@ -3,3 +3,5 @@
 %div= "Age: #{@profile.age}"
 %div= "Gender:#{@profile.gender}"
 %div= "Bio: #{@profile.bio}"
+
+%button= link_to 'Edit', edit_profile_path(current_user)

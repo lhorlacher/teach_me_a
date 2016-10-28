@@ -1,2 +1,4 @@
 %h1 Edit User Profile
 =render(partial: 'form')
+
+%button= link_to 'Profile', profile_path(current_user)
