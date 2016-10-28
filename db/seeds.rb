@@ -1,7 +1,72 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+teacher_increment = 1
+student_increment = 1
+
+5.times do
+	teacher = User.create(
+		email: "teacher.test.#{teacher_increment}@test.com",
+		password: 'password',
+		teacher: true
+	)
+
+	teacher_profile = teacher.build_profile(
+		instrument: ['Piano', 'Piccolo', 'Mouth Harp', 'Harmonica'].sample,
+		age: (18..50).to_a.sample,
+		gender: ['boy', 'girl'].sample,
+		bio: Faker::Lorem.sentences(2),
+		user_id: teacher.id
+	)
+
+		binding.pry
+
+
+	teacher_profile.save
+
+	teacher_increment += 1
+
+	5.times do
+		student = User.create(
+			email: "student.test.#{student_increment}@test.com",
+			password: 'password',
+			teacher_id: teacher.id
+		)
+
+		student.update(teacher: false)
+
+		student_profile = student.build_profile(
+			instrument: teacher.profile.instrument,
+			age: (5..18).to_a.sample,
+			gender: ['boy', 'girl'].sample,
+			bio: Faker::Lorem.sentences(2),
+			user_id: student.id
+		)
+
+		student_profile.save
+
+		student_increment += 1
+
+		3.times do
+			lesson = Lesson.create(
+				date: Faker::Date.between(21.days.ago, Date.today),
+				feedback: Faker::Lorem.sentences(2),
+				student_id: student.id,
+				teacher_id: teacher.id 
+			)
+
+			lesson_note = LessonNote.create(
+				notes: Faker::Lorem.sentences(2),
+				lesson_id: lesson.id
+			)
+
+			3.times do
+				assignment = Assignment.create(
+					book: ['Lesson', 'Technique', 'Hannon', 'Theory', 'Performance'].sample,
+					page: (1..30).to_a.sample,
+					per_day: (3..10).to_a.sample,
+					per_week: (3..7).to_a.sample,
+					instruction: Faker::Lorem.sentences(2),
+					lesson_id: lesson.id
+				)
+			end
+		end
+	end
+end

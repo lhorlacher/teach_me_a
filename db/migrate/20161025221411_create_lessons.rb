@@ -4,7 +4,7 @@ class CreateLessons < ActiveRecord::Migration[5.0]
       t.date :date, null: false
       t.text :feedback
       t.integer :teacher_id, null: false
-      t.belongs_to :user, null: false
+      t.integer :student_id, null: false
 
       t.timestamps
     end

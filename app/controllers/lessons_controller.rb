@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_student, only: [:index, :new, :create]
+	before_action :set_student, only: [:index, :new, :create, :destroy]
 	before_action :set_lesson, only: [:show, :edit, :update, :destroy]
 	before_action :check_permissions, except: [:index, :show]
 
@@ -39,6 +39,7 @@ class LessonsController < ApplicationController
 
 	def destroy
 		@lesson.destroy
+		redirect_to lesson_path(@student)
 
 	end
 
@@ -53,7 +54,7 @@ class LessonsController < ApplicationController
 	end
 
 	def lesson_params
-		params.require(:lesson).permit(:date, :feedback)
+		params.require(:lesson).permit(:date, :feedback, :user_id, :teacher_id)
 	end
 
 	def check_permissions

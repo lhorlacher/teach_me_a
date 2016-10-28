@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
     has_one :profile
 
+    has_many :lessons
+    has_many :teachers, :through => :lessons
+    has_many :students, :through => :lessons
+
     def lessons
       Lesson.where(student_id: id)
     end
