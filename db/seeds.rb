@@ -16,8 +16,6 @@ student_increment = 1
 		user_id: teacher.id
 	)
 
-		binding.pry
-
 
 	teacher_profile.save
 

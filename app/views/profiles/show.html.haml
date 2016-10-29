@@ -4,4 +4,4 @@
 %div= "Gender:#{@profile.gender}"
 %div= "Bio: #{@profile.bio}"
 
-%button= link_to 'Edit', edit_profile_path(current_user)
+= link_to 'Edit', edit_profile_path(current_user), class: 'btn btn-warning'
