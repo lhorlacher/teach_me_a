@@ -5,7 +5,8 @@ student_increment = 1
 	teacher = User.create(
 		email: "teacher.test.#{teacher_increment}@test.com",
 		password: 'password',
-		teacher: true
+		teacher: true,
+		name: Faker::Name.name
 	)
 
 	teacher_profile = teacher.build_profile(
@@ -13,8 +14,7 @@ student_increment = 1
 		age: (18..50).to_a.sample,
 		gender: ['boy', 'girl'].sample,
 		bio: Faker::Lorem.sentences(2),
-		user_id: teacher.id,
-		name: Faker::Name.name 
+		user_id: teacher.id, 
 	)
 
 	teacher_profile.save
@@ -25,7 +25,8 @@ student_increment = 1
 		student = User.create(
 			email: "student.test.#{student_increment}@test.com",
 			password: 'password',
-			teacher_id: teacher.id
+			teacher_id: teacher.id,
+			name: Faker::Name.name
 		)
 
 		student.update(teacher: false)
@@ -35,8 +36,7 @@ student_increment = 1
 			age: (5..18).to_a.sample,
 			gender: ['boy', 'girl'].sample,
 			bio: Faker::Lorem.sentences(2),
-			user_id: student.id,
-			name: Faker::Name.name 
+			user_id: student.id	 
 		)
 
 		student_profile.save

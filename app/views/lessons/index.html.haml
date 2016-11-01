@@ -1,5 +1,5 @@
 - if current_user.is_teacher?
-	%h3= @student.profile.name
+	%h3= @student.name
 	
 - if @student.lessons.count == 0
 	%h3 No lessons to display.
