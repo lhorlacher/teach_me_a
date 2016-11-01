@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@current_user.students
+		@students = User.students(current_user.id)
 	end
 
 end

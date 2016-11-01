@@ -1,18 +1,2 @@
 %h1 Edit User Profile
-=form_for @profile do |f|
-	.form_group
-		=f.label :name
-		=f.text_field :name, required: true, readonly: true, class: 'form-control'
-	.form-group
-		=f.label :instrument
-		=f.text_field :instrument, required: true, readonly: true, class: 'form-control'
-	.form-group
-		=f.label :age
-		=f.text_field :age, required: true, readonly: true, class: 'form-control'
-	.form_group
-		=f.label :gender
-		=f.text_field :gender, required: true, readonly: true, class: 'form-control'
-	.form_group
-		=f.label :bio
-		=f.text_area :bio, required: true, readonly: true, class: 'form-control'
-	= f.submit 'Save Changes', class: 'btn btn-success'
+=render(partial: 'form')
