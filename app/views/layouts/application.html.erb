@@ -39,10 +39,10 @@
               		<% else %>
               			<li><%= link_to 'Add Profile', new_profile_path(current_user) %></li>
               		<% end %>
-              	<% end %>
                 <% if current_user.teacher %>
                   <li><%= link_to 'Add New Student', new_user_registration_path %></li>
                 <% end %>
+              <% end %>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li role="separator" class="divider"></li>

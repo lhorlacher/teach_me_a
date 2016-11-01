@@ -15,6 +15,4 @@
 	.form_group
 		=f.label :bio
 		=f.text_area :bio, required: true, readonly: true, class: 'form-control'
-	=f.submit
-
-%button= link_to 'Profile', profile_path(current_user)
+	= f.submit 'Save Changes', class: 'btn btn-success'
