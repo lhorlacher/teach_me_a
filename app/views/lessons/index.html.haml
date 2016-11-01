@@ -1,1 +1,18 @@
-%h1 Lessons
+- if current_user.is_teacher?
+	%h3= @student.profile.name
+	
+- if @student.lessons.count == 0
+	%h3 No lessons to display.
+	%h3= link_to 'Create one here.', new_student_lesson_path(@student)
+- else
+	- @lessons.each do |lesson|
+		.list-item-outer.col-xs-12.col-sm-6.col-md-4
+			%a{:href => "/lessons/#{lesson.id}", :class => 'list-item-link'}
+				.list-item-inner.well
+					%h3= lesson.date.to_time.strftime("%a, %b %d, %Y")
+					- list = ''
+					- lesson.assignments.each do |assign|
+						- list += "#{assign.book}: p#{assign.page}, "
+					%h4
+						= "#{list[0..-3]}"
+					%p= "#{lesson.feedback[0..75]}..."

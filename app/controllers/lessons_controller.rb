@@ -1,18 +1,22 @@
 class LessonsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :check_permissions, except: [:index, :show]
 	before_action :set_student, only: [:index, :new, :create, :destroy]
 	before_action :set_lesson, only: [:show, :edit, :update, :destroy]
-	before_action :check_permissions, except: [:index, :show]
 
 	def index
-		@lessons = @student.lessons
+		@lessons = @student.lessons.order('date DESC')
+		@header = "Lessons"
 	end
 
 	def show
+		@assignments = @lesson.assignments
+		@header = "Lesson"
 	end
 
 	def new
 		@lesson = Lesson.new
+		@header = "New Lesson"
 	end
 
 	def create
@@ -26,6 +30,7 @@ class LessonsController < ApplicationController
 	end
 
 	def edit
+		@header = "Edit Lesson"
 	end
 
 	def update
@@ -44,6 +49,10 @@ class LessonsController < ApplicationController
 	end
 
 	private
+
+	def set_lesson
+		@lesson = Lesson.find(params[:id])
+	end
 
 	def set_student
 		if current_user.is_student?

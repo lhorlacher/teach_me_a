@@ -13,9 +13,9 @@ student_increment = 1
 		age: (18..50).to_a.sample,
 		gender: ['boy', 'girl'].sample,
 		bio: Faker::Lorem.sentences(2),
-		user_id: teacher.id
+		user_id: teacher.id,
+		name: Faker::Name.name 
 	)
-
 
 	teacher_profile.save
 
@@ -35,7 +35,8 @@ student_increment = 1
 			age: (5..18).to_a.sample,
 			gender: ['boy', 'girl'].sample,
 			bio: Faker::Lorem.sentences(2),
-			user_id: student.id
+			user_id: student.id,
+			name: Faker::Name.name 
 		)
 
 		student_profile.save

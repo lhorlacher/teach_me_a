@@ -1,3 +1,41 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "profiles"
+
+.page-header {
+	width: 20vh;
+    position: absolute;
+    left: 50%;
+    margin-top: 15px;
+    margin-left: -10vh;
+    text-align: center;
+    border: 0;
+}
+
+.list-item-outer {
+	
+}
+
+.list-item-inner {
+	box-shadow: 0px 0px 0px #888888;
+	top: 0;
+	left: 0;
+	transition: box-shadow .2s, top .2s, left .2s;
+}
+
+.list-item-inner:hover {
+	position: relative;
+	top: -2px;
+	left: -2px;
+	box-shadow: 3px 3px 5px #888888;
+}
+
+.list-item-link {
+	color: black;
+	text-decoration: none;
+}
+
+.list-item-link:hover {
+	text-decoration: none;
+	color: black;
+}
