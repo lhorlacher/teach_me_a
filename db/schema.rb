@@ -10,20 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101203246) do
+ActiveRecord::Schema.define(version: 20161102192402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignments", force: :cascade do |t|
-    t.string   "book",        null: false
-    t.integer  "page",        null: false
+    t.string   "book",                       null: false
+    t.integer  "page",                       null: false
     t.integer  "per_day"
     t.integer  "per_week"
     t.text     "instruction"
     t.integer  "lesson_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "practice_count", default: 0
     t.index ["lesson_id"], name: "index_assignments_on_lesson_id", using: :btree
   end
 
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 20161101203246) do
     t.integer  "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "rating"
   end
 
   create_table "profiles", force: :cascade do |t|

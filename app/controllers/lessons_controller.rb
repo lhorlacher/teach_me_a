@@ -44,7 +44,7 @@ class LessonsController < ApplicationController
 
 	def destroy
 		@lesson.destroy
-		redirect_to lesson_path(@student)
+		redirect_to student_lessons_path(@student)
 
 	end
 
@@ -63,7 +63,7 @@ class LessonsController < ApplicationController
 	end
 
 	def lesson_params
-		params.require(:lesson).permit(:date, :feedback, :user_id, :teacher_id)
+		params.require(:lesson).permit(:date, :feedback, :user_id, :teacher_id, :rating)
 	end
 
 	def check_permissions

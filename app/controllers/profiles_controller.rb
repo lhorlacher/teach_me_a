@@ -3,9 +3,11 @@ class ProfilesController < ApplicationController
 	before_action :set_profile, only: [:show, :edit, :update]
 
   def show
+    @header = "Profile"
   end
 
   def edit
+    @header = "Edit Profile"
   end
 
   def update
@@ -19,6 +21,7 @@ class ProfilesController < ApplicationController
 
   def new
   	@profile = Profile.new
+    @header = "Create Profile"
   end
 
   def create
@@ -27,6 +30,7 @@ class ProfilesController < ApplicationController
       flash[:notice] = "Profile created successfully"
   		redirect_to profile_path(current_user.profile.id)
   	else
+      flash[:warn] = "Profile not created"
   		render :new
   	end
   end
@@ -38,7 +42,7 @@ class ProfilesController < ApplicationController
 	  end
 
 	  def set_profile
-	  	@profile = current_user.profile
+	  	@profile = Profile.find(params[:id])
 	  end
 
 end

@@ -47,6 +47,7 @@ student_increment = 1
 			lesson = Lesson.create(
 				date: Faker::Date.between(21.days.ago, Date.today),
 				feedback: Faker::Lorem.sentences(2),
+				rating: (1..5).to_a.sample,
 				student_id: student.id,
 				teacher_id: teacher.id 
 			)
@@ -63,6 +64,7 @@ student_increment = 1
 					per_day: (3..10).to_a.sample,
 					per_week: (3..7).to_a.sample,
 					instruction: Faker::Lorem.sentences(2),
+					practice_count: (1..10).to_a.sample,
 					lesson_id: lesson.id
 				)
 			end
