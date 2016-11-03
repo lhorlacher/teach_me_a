@@ -1,7 +1,7 @@
 - if current_user.is_teacher?
 	%h3= @student.name
 	
-- if @student.lessons.count == 0
+- if @lessons == 0
 	%h3 No lessons to display.
 	%h3= link_to 'Create one here.', new_student_lesson_path(@student)
 - else

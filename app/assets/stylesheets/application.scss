@@ -49,3 +49,19 @@
 	margin-top: 3px;
 	margin-right: 3px;
 }
+
+.clearfix:after {
+    content:"";
+    display:block;
+    clear:both;
+}
+
+.button-div {
+	text-align: center;
+}
+
+.played-btn {
+	height: 100%;
+	width: 100%;
+}
+

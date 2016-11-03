@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :check_permissions, except: [:index, :show]
-	before_action :set_lesson, only: [:index, :show, :new :create]
+	before_action :set_lesson, only: [:index, :show, :new, :create]
 	before_action :set_student, only: [:index, :show]
 
 	def show

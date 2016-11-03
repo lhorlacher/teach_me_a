@@ -1,4 +1,11 @@
-%h2 Your Students
-- if @students
+- if @students.count == 0
+	%h3 No students to display.
+	%h3= link_to 'Create one here.', new_user_registration_path
+- else
 	- @students.each do |student|
-		%div= student.name
+		.list-item-outer.col-xs-12.col-sm-6.col-md-4
+			%a{:href => "/students/#{student.id}/lessons", :class => 'list-item-link'}
+				.list-item-inner.well
+					%h3= student.name
+					%p= "Age: #{student.profile.age} | Gender: #{student.profile.gender}"
+					%p= "Instrument: #{student.profile.instrument}"

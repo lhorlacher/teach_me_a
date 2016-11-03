@@ -5,12 +5,13 @@ class LessonsController < ApplicationController
 	before_action :set_lesson, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@lessons = @student.lessons.order('date DESC')
+		@lessons = @student.lessons.includes(:assignments).order('date DESC')
 		@header = "Lessons"
 	end
 
 	def show
 		@assignments = @lesson.assignments
+		@student = @lesson.student
 		@header = "Lesson"
 	end
 

@@ -1,0 +1,19 @@
+- if current_user.is_teacher?
+	%h3= @student.name
+%h3= @lesson.date.to_time.strftime("%a, %b %d, %Y")
+	
+- if @assignments == 0
+	%h3 No assignments to display.
+	%h3= link_to 'Create one here.', new_lesson_assignment
+- else
+	- @assignments.each do |assignment|
+		.col-xs-12.col-sm-6.col-md-6
+			%a{:href => "/assignments/#{assignment.id}", :class => 'list-item-link'}
+				.well.clearfix
+					.col-xs-12
+						%h3= "#{assignment.book} p#{assignment.page}"
+					.col-xs-12.col-sm-9
+						%p= "Goal: #{assignment.per_day} times for #{assignment.per_week} days"
+						%p= "Instructions: #{assignment.instruction}"
+					.button-div.col-xs-12.col-sm-3
+						%button.btn.btn-primary.played-btn Played!
