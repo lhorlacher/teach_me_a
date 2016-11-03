@@ -2,11 +2,10 @@
 	%h3= @student.name
 %h3= @lesson.date.to_time.strftime("%a, %b %d, %Y")
 	
-- if @assignments == 0
+- if @assignments.length == 0
 	%h3 No assignments to display.
-	%h3= link_to 'Create one here.', new_lesson_assignment
 - else
-	- @assignments.each do |assignment|
+	- @assignments.each_with_index do |assignment, index|
 		.col-xs-12.col-sm-6.col-md-6
 			%a{:href => "/assignments/#{assignment.id}", :class => 'list-item-link'}
 				.well.clearfix
@@ -17,3 +16,8 @@
 						%p= "Instructions: #{assignment.instruction}"
 					.button-div.col-xs-12.col-sm-3
 						%button.btn.btn-primary.played-btn Played!
+		-if index.odd?
+			.col-xs-12
+-if current_user.teacher
+	.col-xs-12
+		= link_to 'Add assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary'

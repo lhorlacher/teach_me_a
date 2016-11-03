@@ -1,0 +1,17 @@
+=form_for [@lesson, @assignment] do |f|
+	.form-group
+		=f.label :book
+		=f.text_field :book, required: true, class: 'form-control'
+	.form-group
+		=f.label :page
+		=f.number_field :page, required: true, class: 'form-control'
+	.form_group
+		=f.label :per_day
+		=f.number_field :per_day, required: true, class: 'form-control'
+	.form_group
+		=f.label :per_week
+		=f.number_field :per_week, required: true, class: 'form-control'
+	.form_group
+		=f.label :instruction
+		=f.text_area :instruction, class: 'form-control'
+	=f.submit class: 'btn btn-primary'

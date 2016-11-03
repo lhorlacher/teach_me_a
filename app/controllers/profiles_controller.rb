@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
 
   def new
   	@profile = Profile.new
-    @header = "Create Profile"
+    @header = "New Profile"
   end
 
   def create

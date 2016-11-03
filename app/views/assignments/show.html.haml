@@ -1,0 +1,10 @@
+%div= "Book: #{@assignment.book}"
+%div= "Page: #{@assignment.page}"
+%div= "Practices per day:#{@assignment.per_day}"
+%div= "Practices per week: #{@assignment.per_week}"
+%div= "Instructions: #{@assignment.instruction}"
+
+
+-if current_user.teacher
+	= link_to 'Edit', edit_assignment_path(@assignment), class: 'btn btn-warning'
+= link_to 'Back to lesson', lesson_path(@assignment.lesson_id), class: 'btn btn-secondary'
