@@ -22,6 +22,8 @@ class LessonsController < ApplicationController
 
 	def create
 		@lesson = @student.lessons.new(lesson_params)
+		@lesson.teacher_id = current_user.id
+		@lesson.student_id = params[:student_id]
 
 		if @lesson.save
 			redirect_to lesson_path(@lesson)

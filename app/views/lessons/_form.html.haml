@@ -1,0 +1,9 @@
+
+
+=form_for :lesson, {url: "/students/#{@student.id}/lessons"} do |f|
+	.form_group
+		=f.label :date
+		=f.date_field :date, required: true, :value => Time.now.strftime('%Y-%m-%d')
+	.form_group
+		=f.submit class: 'btn btn-primary'
+		%a.btn.btn-secondary{:href => "/students/#{@student.id}/lessons"} Cancel
