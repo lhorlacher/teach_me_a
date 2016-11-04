@@ -17,9 +17,9 @@ Rails.application.routes.draw do
 		end
 	end
 
-	post '/practices', to: 'practices#create'
+	post '/assignments/:assignment_id/practices', to: 'practices#create', as: 'assignment_practices'
 
-	delete '/practices/:id', to: 'practices#destroy'
+	delete '/practices/:id', to: 'practices#destroy', as: 'practice'
 
 
 

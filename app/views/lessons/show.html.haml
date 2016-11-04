@@ -14,8 +14,8 @@
 					.col-xs-12.col-sm-12
 						%p= "Goal: #{assignment.per_day} times on #{assignment.per_week} days"
 						%p= "Instructions: #{assignment.instruction}"
-			.played-button-div
-				%button.btn.btn-primary.played-btn Played!
+			=button_to 'Played!', assignment_practices_path(assignment.id), class: 'btn btn-primary played-btn'
+			
 		-if index.odd?
 			.col-xs-12
 -if current_user.teacher

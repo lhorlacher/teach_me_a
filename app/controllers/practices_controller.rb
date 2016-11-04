@@ -1,13 +1,15 @@
 class PracticesController < ApplicationController
 
 	def create
-		practice = practice.new
+		assignment_id = params[:assignment_id]
+		practice = Practice.new(assignment_id: assignment_id)
 		if practice.save
-			redirect_to lesson_path(params[:lesson_id])
+			redirect_to lesson_path(Assignment.find(assignment_id).lesson.id)
 		else 
 			view = ActionView::Base.new(ActionController::Base.view_paths, {})
 			view.render(file: '../views/lessons/show.html.haml')
 			flash[:warn] = "Practice not recorded"
+		end
 	end
 
 	def delete
