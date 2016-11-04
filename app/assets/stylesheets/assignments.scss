@@ -1,3 +1,25 @@
-// Place all the styles related to the assignments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.played-button-div {
+	text-align: center;
+	width: 100%;
+	height: 50px;
+	margin-bottom: 10px;
+}
+
+.played-btn {
+	height: 100%;
+	width: 100%;
+	border: 1px solid #e3e3e3;
+	margin-top: 0;
+	border-top: 0;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.assignment-div {
+	margin-bottom: 0;
+}
+
+.well {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}

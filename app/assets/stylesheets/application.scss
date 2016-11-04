@@ -1,6 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "profiles";
+
 
 .page-header {
 	width: 20vh;
@@ -57,20 +57,13 @@
     clear:both;
 }
 
-.played-button-div {
-	text-align: center;
-	height: 100%;
-}
-
-.played-btn {
-	height: 100%;
-	width: 100%;
-}
-
 .top-right-absolute {
 	position: absolute;
 	right: 9.5vw;
 	top: 80px;
 }
+
+@import "assignments";
+@import "profiles";
 
 

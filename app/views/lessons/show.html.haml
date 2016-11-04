@@ -8,14 +8,14 @@
 	- @assignments.each_with_index do |assignment, index|
 		.col-xs-12.col-sm-6.col-md-6
 			%a{:href => "/assignments/#{assignment.id}", :class => 'list-item-link'}
-				.well.clearfix
+				.well.clearfix.assignment-div
 					.col-xs-12
 						%h3= "#{assignment.book} p#{assignment.page}"
 					.col-xs-12.col-sm-12
 						%p= "Goal: #{assignment.per_day} times on #{assignment.per_week} days"
 						%p= "Instructions: #{assignment.instruction}"
-					.button-div.col-xs-12.col-sm-3
-						%button.btn.btn-primary.played-btn Played!
+			.played-button-div
+				%button.btn.btn-primary.played-btn Played!
 		-if index.odd?
 			.col-xs-12
 -if current_user.teacher
