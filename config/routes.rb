@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 		end
 	end
 
+	post '/practices', to: 'practices#create'
+
+	delete '/practices/:id', to: 'practices#destroy'
+
 
 
 
