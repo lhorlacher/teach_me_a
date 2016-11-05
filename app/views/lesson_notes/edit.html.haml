@@ -1,0 +1,4 @@
+-if @lesson_note.errors.any?
+	%p= @lesson_note.errors.full_messages
+=render(partial: 'form')
+=link_to 'Cancel', lesson_path(@lesson_note.lesson_id), class: 'btn btn-secondary'

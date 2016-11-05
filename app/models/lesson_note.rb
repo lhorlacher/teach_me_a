@@ -1,4 +1,8 @@
 class LessonNote < ApplicationRecord
 	belongs_to :lesson
-	belongs_to :user
+
+	def lesson
+		Lesson.find(self.lesson_id)
+	end
+
 end

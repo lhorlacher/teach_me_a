@@ -52,18 +52,8 @@ class AssignmentsController < ApplicationController
 		@lesson = Lesson.find(params[:lesson_id])
 	end
 
-	def set_student
-		if current_user
-			if current_user.is_student?
-				@student = current_user
-			else
-				@student = User.find(@lesson.student_id)
-			end
-		end
-	end
-
 	def check_permissions
-		unless current_user.teacher?
+		unless current_user.teacher
 			redirect_to student_lessons_path(current_user.lessons)
 		end
 	end

@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
-	console.log('this is happening')
 
 	var fillDivs = $('.fill-div')
 	var colors = ['#66ffff', '#66ff66', '#ff9933', '#6699ff']

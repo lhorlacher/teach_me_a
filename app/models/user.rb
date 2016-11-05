@@ -17,4 +17,8 @@ class User < ApplicationRecord
     def self.students(id)
     	User.where(teacher_id: id)
     end
+
+    def lesson_notes
+      LessonNote.where(lesson_id: Lesson.where(student_id: self.id).pluck(:id))
+    end
 end

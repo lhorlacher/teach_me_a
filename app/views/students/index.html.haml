@@ -1,6 +1,6 @@
 - if @students.count == 0
 	%h3 No students to display.
-	%h3= link_to 'Create one here.', new_user_registration_path
+	%h3= link_to 'Add a student', new_user_registration_path
 - else
 	- @students.each do |student|
 		.list-item-outer.col-xs-12.col-sm-6.col-md-4

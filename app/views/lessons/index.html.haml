@@ -18,3 +18,7 @@
 					%h4
 						= "#{list[0..-3]}"
 					%p= "#{lesson.feedback[0..75]}" if lesson.feedback
+	.col-xs-12
+		-if current_user
+			-if current_user.teacher
+				=link_to 'Lesson notes', student_lesson_notes_path(@student), class: 'btn btn-primary'

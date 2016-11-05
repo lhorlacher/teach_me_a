@@ -17,6 +17,8 @@
 			
 		-if index.odd?
 			.col-xs-12
--if current_user.teacher
-	.col-xs-12
-		= link_to 'Add assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary'
+-if current_user
+	-if current_user.teacher
+		.col-xs-12
+			= link_to 'Add assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary'
+			= link_to 'View lesson notes', lesson_lesson_notes_path(@lesson), class: 'btn btn-primary'

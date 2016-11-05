@@ -1,0 +1,5 @@
+= form_for [@lesson, @lesson_note] do |f|
+	.form_group
+	=f.label :notes
+	=f.text_area :notes, required: true, class: 'form-control'
+	=f.submit class: 'btn btn-primary'

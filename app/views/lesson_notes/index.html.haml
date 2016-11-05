@@ -1,0 +1,14 @@
+%h2= @lesson.date.to_time.strftime("%a, %b %d, %Y")
+
+- if @lesson_notes.length == 0
+	%h3 No lesson notes to display.
+- else
+	- @lesson_notes.each_with_index do |lesson_note, index|
+		.list-item-outer.col-xs-12.col-sm-6.col-md-4
+			.list-item-inner.well
+				%p= lesson_note.notes
+				=link_to 'Edit', edit_lesson_note_path(lesson_note), class: 'btn btn-warning'
+		-if index.odd?
+			.col-xs-12
+.col-xs-12
+	= link_to 'Back to lesson', lesson_path(@lesson), class: 'btn btn-secondary'
