@@ -7,17 +7,17 @@ class LessonNotesController < ApplicationController
 	def student_index
 		@student = User.find(params[:student_id])
 		@lesson_notes = @student.lesson_notes
-		@links = {header: 'Lesson Notes', nav_link: {display: 'To Student', url: "/students/@student.id/lessons"}}
+		@links = {header: 'Lesson Notes', nav_link: {display: 'To Student', url: "/students/#{@student.id}/lessons"}}
 	end
 
 	def index
 		@lesson_notes = @lesson.lesson_notes
-		@links = {header: 'Lesson Notes', nav_link: {display: 'To Lesson', url: "/lessons/@lesson.id"}}
+		@links = {header: 'Lesson Notes', nav_link: {display: 'To Lesson', url: "/lessons/#{@lesson.id}"}}
 
 	end
 
 	def new
-		@links = {header: 'New Note', nav_link: {display: 'To Lesson', url: "/lessons/@lesson.id"}}
+		@links = {header: 'New Note', nav_link: {display: 'To Lesson', url: "/lessons/#{@lesson.id}"}}
 		@lesson_note = LessonNote.new
 	end
 
