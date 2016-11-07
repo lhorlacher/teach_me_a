@@ -4,9 +4,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 skip_before_action :require_no_authentication, only: [:new, :create]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    if current_user
+        if current_user.teacher
+          @links = {header: 'New Student'}
+        end
+      end
+    super
+  end
 
   # POST /user
   def create

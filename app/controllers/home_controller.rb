@@ -7,5 +7,6 @@ class HomeController < ApplicationController
 	  		redirect_to student_lessons_path(current_user.id)
 	  	end
 	end
+	@links = {header: 'Home'}
   end
 end

@@ -6,18 +6,19 @@ class LessonsController < ApplicationController
 
 	def index
 		@lessons = @student.lessons.includes(:assignments).order('date DESC')
-		@header = "Lessons"
+		@links = {header: 'Lessons', 
+			nav_link: current_user.teacher ? {display: 'To Students', url: '/students'} : nil}
 	end
 
 	def show
 		@assignments = @lesson.assignments
 		@student = @lesson.student
-		@header = "Lesson"
+		@links = {header: 'Lesson', nav_link: {display: 'To Student', url: "/students/#{@student.id}/lessons"} }
 	end
 
 	def new
 		@lesson = Lesson.new
-		@header = "New Lesson"
+		@links = {header: "New Lesson", nav_link: {display: 'To Student', url: "/students/#{@student.id}/lessons"}}
 	end
 
 	def create
@@ -33,7 +34,7 @@ class LessonsController < ApplicationController
 	end
 
 	def edit
-		@header = "Edit Lesson"
+		@links = {header: 'Edit Lesson', nav_link: {display: 'To Student', url: "/lessons/#{@lesson.id}"}}
 	end
 
 	def update

@@ -5,11 +5,11 @@ class AssignmentsController < ApplicationController
 	before_action :set_assignment, only: [:show, :edit, :update, :destroy]
 
 	def show
-		@header = 'Assignment'
+		@links = {header: 'Assignment'}
 	end
 
 	def new
-		@header = 'New Assignment'
+		@links = {header: 'New Assignment', nav_link: {display: 'To Lesson', url: "/lessons/#{@lesson.id}"}}
 		@assignment = @lesson.assignments.new
 	end
 
@@ -23,7 +23,8 @@ class AssignmentsController < ApplicationController
 	end
 
 	def edit
-		@header = 'Edit Assignment'
+		lesson = Lesson.find(@assignment.lesson_id)
+		@links = {header: 'Edit Assignment', nav_link: {display: 'To Lesson', url: "/lessons/#{lesson.id}"}}
 	end
 
 	def update

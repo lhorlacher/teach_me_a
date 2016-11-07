@@ -3,11 +3,13 @@ class ProfilesController < ApplicationController
 	before_action :set_profile, only: [:show, :edit, :update]
 
   def show
-    @header = "Profile"
+    @links = {header: 'Profile',
+      nav_link: current_user.teacher ? {display: 'To Students', url: '/students'} : 
+      {display: 'To Lessons', url: "/students/#{current_user.id}/lessons"} }
   end
 
   def edit
-    @header = "Edit Profile"
+    @links = {header: 'Edit Profile', nav_link: {display: 'To Profile', url: "/profiles/#{@profile.id}"} }
   end
 
   def update
@@ -21,7 +23,7 @@ class ProfilesController < ApplicationController
 
   def new
   	@profile = Profile.new
-    @header = "New Profile"
+    @links = {header: 'New Profile'}
   end
 
   def create

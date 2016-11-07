@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
 
 	def index
 		@students = User.students(current_user.id).includes(:profile).order(name: :asc)
-		@header = "Students"
+		@links = {header: 'Students'}
 	end
 
 end
