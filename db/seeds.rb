@@ -1,7 +1,7 @@
 teacher_increment = 1
 student_increment = 1
 
-5.times do
+2.times do
 	teacher = User.create(
 		email: "teacher.test.#{teacher_increment}@test.com",
 		password: 'password',
