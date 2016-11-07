@@ -13,7 +13,7 @@
 	- @assignments.each_with_index do |assignment, index|
 		.col-xs-12.col-sm-6.col-md-6
 
-			.well.btn-well.clearfix.assignment-div.col-xs-12
+			.well.btn-well.assignment-well.clearfix.assignment-div.col-xs-12
 				.assignment-div.fill-div{:data => {fill: "#{assignment.fill}"}}
 				%h3= "#{assignment.book} p#{assignment.page}"
 				%p= "Goal: #{assignment.per_day} times on #{assignment.per_week} days"
