@@ -4,8 +4,8 @@
 
 - if current_user.is_teacher?
 	.col-xs-12
-		= link_to 'Add assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
-		= link_to 'View lesson notes', lesson_lesson_notes_path(@lesson), class: 'btn btn-primary top-btn'
+		= link_to 'New Assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
+		= link_to 'View Lesson Note', edit_lesson_note_path(@lesson.lesson_notes.first), class: 'btn btn-primary top-btn'
 	
 - if @assignments.length == 0
 	%h3 No assignments to display.

@@ -66,6 +66,16 @@ student_increment = 1
 					instruction: Faker::Lorem.sentences(2),
 					lesson_id: lesson.id
 				)
+
+				per_day = (1..assignment.per_day).to_a.sample
+				per_week = (1..assignment.per_week).to_a.sample
+
+				(per_day * per_week).times do 
+					practice = Practice.create(
+						assignment_id: assignment.id,
+						created_at: (lesson.date + (1..6).to_a.sample.days)
+					)
+				end
 			end
 		end
 	end

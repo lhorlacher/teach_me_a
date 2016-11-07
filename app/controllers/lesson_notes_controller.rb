@@ -1,19 +1,13 @@
 class LessonNotesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :verify_teacher
-	before_action :set_lesson, only: [:index, :new, :create]
-	before_action :set_lesson_note, only: [:edit, :update, :destroy]
+	before_action :set_lesson, only: [:new, :create]
+	before_action :set_lesson_note, only: [:show, :edit, :update, :destroy]
 
 	def student_index
 		@student = User.find(params[:student_id])
-		@lesson_notes = @student.lesson_notes
-		@links = {header: 'Lesson Notes', nav_link: {display: 'To Student', url: "/students/#{@student.id}/lessons"}}
-	end
-
-	def index
-		@lesson_notes = @lesson.lesson_notes
-		@links = {header: 'Lesson Notes', nav_link: {display: 'To Lesson', url: "/lessons/#{@lesson.id}"}}
-
+		@lesson_notes = @student.lesson_notes.joins("INNER JOIN lessons ON lesson_notes.lesson_id = lessons.id").order("lessons.date")
+		@links = {header: 'Lesson Notes', nav_link: {display: 'To Students', url: "/students"}}
 	end
 
 	def new

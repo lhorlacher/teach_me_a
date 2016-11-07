@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <% if @links[:nav_link] %>
-            <li><a href=<%= @links[:nav_link][:url] %> ><%= @links[:nav_link][:display] %> </a></li>
+            <li><a href=<%= @links[:nav_link][:url] %> ><span class="glyphicon glyphicon-menu-left"></span><%= @links[:nav_link][:display] %> </a></li>
           <% end %>
 
         	<% if current_user %>

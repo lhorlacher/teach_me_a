@@ -5,16 +5,15 @@
 - if current_user.is_teacher?
 	.col-xs-12
 		=link_to 'New Lesson', new_student_lesson_path(@student), class: 'btn btn-primary top-btn'
-		=link_to 'Lesson notes', student_lesson_notes_path(@student), class: 'btn btn-primary top-btn'
 	
 - if @lessons == 0
 	%h3 No lessons to display.
 	%h3= link_to 'Create one here.', new_student_lesson_path(@student)
 - else
 	- @lessons.each do |lesson|
-		.list-item-outer.col-xs-12.col-sm-6.col-md-4
+		.col-xs-12.col-sm-6.col-md-4
 			%a{:href => "/lessons/#{lesson.id}", :class => 'list-item-link'}
-				.list-item-inner.well
+				.well
 					%h3= lesson.date.to_time.strftime("%a, %b %d, %Y")
 					- list = ''
 					- lesson.assignments.each do |assign|
