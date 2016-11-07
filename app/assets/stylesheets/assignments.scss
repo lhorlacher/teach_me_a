@@ -1,20 +1,31 @@
-
-
-.played-btn {
+.card-btn {
 	height: 50px;
-	width: 100%;
-	border: 2px solid #e3e3e3;
+	border: 1px solid #e3e3e3;
 	margin-top: 0;
 	margin-bottom: 10px;
 	border-top: 0;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
 	line-height: 100%;
 	font-size: 1.5em;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.full-btn {
+	width: 100%;
+}
+
+.left-btn {
+	border-bottom-right-radius: 0;
 
 }
 
-.played-btn:hover {
+.right-btn {
+	border-bottom-left-radius: 0;
+}
+
+.full-btn:hover {
 	border: 2px solid #e3e3e3;
 	border-top: 0;
 }
@@ -23,7 +34,7 @@
 	margin-bottom: 0;
 }
 
-.well {
+.assignment-well {
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 	background-color: transparent;

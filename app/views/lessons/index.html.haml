@@ -1,7 +1,11 @@
 - if current_user.is_teacher?
-	%h3= @student.name
+	.col-xs-12
+		%h3= @student.name
 
-%a.top-right-absolute.btn.btn-primary{:href => "/students/#{@student.id}/lessons/new"} New
+- if current_user.is_teacher?
+	.col-xs-12
+		=link_to 'New Lesson', new_student_lesson_path(@student), class: 'btn btn-primary top-btn'
+		=link_to 'Lesson notes', student_lesson_notes_path(@student), class: 'btn btn-primary top-btn'
 	
 - if @lessons == 0
 	%h3 No lessons to display.
@@ -18,7 +22,4 @@
 					%h4
 						= "#{list[0..-3]}"
 					%p= "#{lesson.feedback[0..75]}" if lesson.feedback
-	.col-xs-12
-		-if current_user
-			-if current_user.teacher
-				=link_to 'Lesson notes', student_lesson_notes_path(@student), class: 'btn btn-primary'
+

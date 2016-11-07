@@ -37,6 +37,7 @@ class AssignmentsController < ApplicationController
 
 	def destroy
 		@assignment.destroy
+		redirect_to lesson_path(@assignment.lesson_id)
 	end
 
 	private
