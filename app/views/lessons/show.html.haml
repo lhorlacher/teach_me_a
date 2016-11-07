@@ -12,16 +12,18 @@
 - else
 	- @assignments.each_with_index do |assignment, index|
 		.col-xs-12.col-sm-6.col-md-6
-			.well.assignment-well.clearfix.assignment-div.col-xs-12
+
+			.well.btn-well.clearfix.assignment-div.col-xs-12
 				.assignment-div.fill-div{:data => {fill: "#{assignment.fill}"}}
 				%h3= "#{assignment.book} p#{assignment.page}"
 				%p= "Goal: #{assignment.per_day} times on #{assignment.per_week} days"
 				%p= "Instructions: #{assignment.instruction}"
+
 			- if current_user.is_student?
 				=button_to 'Played!', assignment_practices_path(assignment.id), class: 'btn btn-primary card-btn full-btn'
 			- else
-				=button_to 'Edit', edit_assignment_path(assignment.id), class: 'btn btn-warning card-btn left-btn col-xs-6', method: :get
-				=button_to 'Delete', assignment_path(assignment.id), class: 'btn btn-danger card-btn right-btn col-xs-6', method: :delete
+				=button_to 'Edit', edit_assignment_path(assignment.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
+				=button_to 'Delete', assignment_path(assignment.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :delete, data: {confirm: "Are you sure?"}
 			
 		-if index.odd?
 			.col-xs-12

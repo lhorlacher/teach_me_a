@@ -18,7 +18,6 @@
 
 .left-btn {
 	border-bottom-right-radius: 0;
-
 }
 
 .right-btn {
@@ -34,11 +33,14 @@
 	margin-bottom: 0;
 }
 
-.assignment-well {
+.btn-well {
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
-	background-color: transparent;
 	border-bottom: none;
+}
+
+.assignment-well {
+	background-color: transparent;
 }
 
 .fill-div {

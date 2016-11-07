@@ -7,6 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700|PT+Sans" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     
   </head>
@@ -21,7 +23,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">TeachMe</a>
+        <a class="navbar-brand" id='logo' href="/">TeachMe</a>
         <% if @links[:header] %>
           <div class='page-header'> <h4><%= @links[:header] %></h4> </div>
         <% end %>

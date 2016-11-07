@@ -1,6 +1,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+#logo {
+	font-family: 'Comfortaa', cursive;
+}
+
+body {
+	font-family: 'PT Sans', sans-serif;
+}
 
 .page-header {
 	width: 20vh;
