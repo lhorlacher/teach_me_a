@@ -89,10 +89,10 @@ skip_before_action :require_no_authentication, only: [:new, :create]
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :teacher, :name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :teacher, :name, :profile_picture)
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :name, :profile_picture)
   end
 end

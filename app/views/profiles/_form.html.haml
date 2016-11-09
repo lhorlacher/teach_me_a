@@ -11,4 +11,7 @@
 	.form_group
 		=f.label :bio
 		=f.text_area :bio, required: true, class: 'form-control'
+	.form_group
+		=f.label :profile_picture
+		=f.file_field :profile_picture, class: 'form-control'
 	=f.submit class: 'btn btn-primary'
