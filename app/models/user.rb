@@ -6,12 +6,6 @@ class User < ApplicationRecord
 
     has_one :profile, dependent: :destroy
 
-    has_attached_file :profile_picture,
-                  styles: { thumb: ["64x64#", :jpg] }
-
-    validates_attachment :profile_picture,
-                         content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
-
     has_many :lessons
     has_many :teachers, :through => :lessons
     has_many :students, :through => :lessons
