@@ -43,17 +43,6 @@
 	background-color: transparent;
 }
 
-.fill-div {
-	min-height: 0px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-	border-top-right-radius: 4px;
-	border-top-left-radius: 4px;
-	background-color: green;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	z-index: -1;
-	padding: 0px;
+.fill-div-space {
+	padding-bottom: 50px;
 }

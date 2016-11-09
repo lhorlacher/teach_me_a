@@ -12,6 +12,7 @@
 		=f.label :bio
 		=f.text_area :bio, required: true, class: 'form-control'
 	.form_group
-		=f.label :profile_picture
-		=f.file_field :profile_picture, class: 'form-control'
+		=f.label :profile_picture, 'Upload Picture', class: 'btn btn-secondary margin-after'
+		%span.no-display
+			= f.file_field :profile_picture, class: 'form-control'
 	=f.submit class: 'btn btn-primary'
