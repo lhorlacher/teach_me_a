@@ -18,7 +18,7 @@
 				.assignment-div.fill-div.grad{:data => {fill: "#{assignment.fill}"}}
 
 			- if current_user.is_student?
-				=button_to 'Played!', assignment_practices_path(assignment.id), class: 'btn btn-primary card-btn full-btn'
+				=button_to 'Played!', assignment_practices_path(assignment.id), class: 'btn btn-primary card-btn full-btn played-btn', form: { 'data-id' => "#{assignment.id}", class: 'played-form' } 
 			- else
 				=button_to 'Edit', edit_assignment_path(assignment.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
 				=button_to 'Delete', assignment_path(assignment.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :delete, data: {confirm: "Are you sure?"}

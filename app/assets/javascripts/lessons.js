@@ -2,19 +2,50 @@ $(document).on('turbolinks:load', function() {
 
 	var fillDivs = $('.fill-div')
 	var colors = ['#66ffff', '#66ff66', '#ff9933', '#6699ff']
+	var playButtons = $('.played-btn')
+	var fillDiv
+	var timer
 
-	fillDivs.map(function(i) {
-		var div = fillDivs[i]
-		setHeight(div)
+
+	fillDivs.map(function(i, div) {
+		setWidth(div)
 		setColor(div, i)
 	})
 
-	function setHeight(div) {
-		div.style.height = div.dataset.fill + '%'
+	function setWidth(div) {
+		div.style.width = div.dataset.fill + '%'
 	}
 
 	function setColor(div, i) {
 		div.style.backgroundColor = colors[i % colors.length]
 	}
+
+	function setActive() {
+		playButtons.map(function(i, button) {
+			button.disabled = false
+		})
+	}
+
+	function setDisabled() {
+		playButtons.map(function(i, button) {
+			button.disabled = true
+		})
+		setTimeout(setActive, 10000)
+	}
+
+	$(".played-form").submit(function(e) {
+		e.preventDefault()
+		fillDiv = e.target.parentElement.children[0].children[0]
+		$.ajax({
+			url: '/assignments/' + e.target.dataset.id + '/practices',
+			type: 'POST'
+		}).done( function() {
+			setWidth(fillDiv)
+			setDisabled()
+
+		})
+	})
+
+
 
 })

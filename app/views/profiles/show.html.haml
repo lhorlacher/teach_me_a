@@ -1,8 +1,9 @@
 %h3.col-xs-12= @user.name
 
 .col-xs-12.well.btn-well.clearfix.assignment-div
-	.col-xs-12.col-sm-4.center
-		= image_tag(@profile.profile_picture.url(:standard))
+	- if @profile.profile_picture.url !~ /.*missing.*/
+		.col-xs-12.col-sm-4.center
+			= image_tag(@profile.profile_picture.url(:standard))
 	.col-xs-12.col-sm-8
 		%h4 Instrument
 		.profile-content
