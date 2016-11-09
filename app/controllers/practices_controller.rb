@@ -4,7 +4,7 @@ class PracticesController < ApplicationController
 		assignment_id = params[:assignment_id]
 		practice = Practice.new(assignment_id: assignment_id)
 		if practice.save
-			return 'success'
+			render json: {fill: Assignment.find(assignment_id).fill}
 		else 
 			view = ActionView::Base.new(ActionController::Base.view_paths, {})
 			view.render(file: '../views/lessons/show.html.haml')
