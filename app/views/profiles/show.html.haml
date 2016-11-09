@@ -1,16 +1,19 @@
 %h3.col-xs-12= @user.name
 
 .col-xs-12.well.btn-well.clearfix.assignment-div
-	%h4 Instrument
-	.profile-content
-		= "#{@profile.instrument}"
-	%h4 Birthday
-	.profile-content
-		= "#{@profile.birthday.to_time.strftime("%b %d, %Y")}"
-	%h4 Gender
-	.profile-content
-		= "#{@profile.gender}"
-	%h4 Bio
-	%p.profile-content= "#{@profile.bio}"
+	.col-xs-12.col-sm-4.center
+		= image_tag(@profile.profile_picture.url(:standard))
+	.col-xs-12.col-sm-8
+		%h4 Instrument
+		.profile-content
+			= "#{@profile.instrument}"
+		%h4 Birthday
+		.profile-content
+			= "#{@profile.birthday.to_time.strftime("%b %d, %Y")}"
+		%h4 Gender
+		.profile-content
+			= "#{@profile.gender}"
+		%h4 Bio
+		%p.profile-content= "#{@profile.bio}"
 
-= button_to 'Edit', edit_profile_path(current_user), class: 'btn btn-secondary card-btn full-btn col-xs-6', method: :get
+= button_to 'Edit', edit_profile_path(@profile), class: 'btn btn-secondary card-btn full-btn col-xs-6', method: :get

@@ -3,11 +3,16 @@
 	%h3= link_to 'Add a student', new_user_registration_path
 - else
 	- @students.each do |student|
-		.col-xs-12.col-sm-6.col-md-4
+		.col-xs-12.col-sm-6
 			%a{:href => "/students/#{student.id}/lessons", :class => 'list-item-link'}
 				.well.btn-well.clearfix.assignment-div
-					%h3= student.name
-					%p= "Birthday: #{student.profile.birthday} | Gender: #{student.profile.gender}"
-					%p= "Instrument: #{student.profile.instrument}"
+					- if student.profile.profile_picture.url !~ /.*missing.*/
+						.col-xs-4.profile-picture-div
+							= image_tag(student.profile.profile_picture.url(:thumb))
+					.col-xs-8
+						%h3= student.name
+						%p= "Birthday: #{student.profile.birthday} | Gender: #{student.profile.gender}"
+						%p= "Instrument: #{student.profile.instrument}"
+
 			=button_to 'View Profile', profile_path(student.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
 			=button_to 'History', student_lesson_notes_path(student.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :get
