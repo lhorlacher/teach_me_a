@@ -11,7 +11,7 @@ student_increment = 1
 
 	teacher_profile = teacher.build_profile(
 		instrument: ['Piano', 'Piccolo', 'Mouth Harp', 'Harmonica'].sample,
-		age: (18..50).to_a.sample,
+		birthday: Faker::Date.between(50.years.ago, 20.years.ago),
 		gender: ['boy', 'girl'].sample,
 		bio: Faker::Lorem.sentences(2),
 		user_id: teacher.id, 
@@ -33,7 +33,7 @@ student_increment = 1
 
 		student_profile = student.build_profile(
 			instrument: teacher.profile.instrument,
-			age: (5..18).to_a.sample,
+			birthday: Faker::Date.between(20.years.ago, 4.years.ago),
 			gender: ['boy', 'girl'].sample,
 			bio: Faker::Lorem.sentences(2),
 			user_id: student.id	 

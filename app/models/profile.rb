@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
 	belongs_to :user
-	validates_presence_of :age, :gender, :instrument, :bio, :user_id
+	validates_presence_of :birthday, :gender, :instrument, :bio, :user_id
 
 	has_attached_file :profile_picture,
 	              styles: { thumb: ["64x64#", :jpg] }

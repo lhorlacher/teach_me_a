@@ -7,7 +7,7 @@
 			%a{:href => "/students/#{student.id}/lessons", :class => 'list-item-link'}
 				.well.btn-well.clearfix.assignment-div
 					%h3= student.name
-					%p= "Age: #{student.profile.age} | Gender: #{student.profile.gender}"
+					%p= "Birthday: #{student.profile.birthday} | Gender: #{student.profile.gender}"
 					%p= "Instrument: #{student.profile.instrument}"
 			=button_to 'View Profile', profile_path(student.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
 			=button_to 'History', student_lesson_notes_path(student.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :get
