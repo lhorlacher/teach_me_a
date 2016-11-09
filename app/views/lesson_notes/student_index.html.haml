@@ -5,9 +5,9 @@
 - else
 	- @lesson_notes.each_with_index do |lesson_note, index|
 		.col-xs-12.col-sm-6.col-md-4.clearfix
-			.well.assignment-well.clearfix.assignment-div
+			.well.btn-well.clearfix.assignment-div
 				%h3= lesson_note.lesson.date.to_time.strftime("%a, %b %d, %Y")
 				%p= lesson_note.notes
-			=button_to 'Edit', edit_lesson_note_path(lesson_note), class: 'btn btn-warning card-btn full-btn col-xs-6', method: :get
+			=button_to 'Edit', edit_lesson_note_path(lesson_note), class: 'btn btn-secondary card-btn full-btn col-xs-6', method: :get
 		-if index.odd?
 			.col-xs-12

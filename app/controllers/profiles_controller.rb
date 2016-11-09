@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
     @links = {header: 'Profile',
       nav_link: current_user.teacher ? {display: 'To Students', url: '/students'} : 
       {display: 'To Lessons', url: "/students/#{current_user.id}/lessons"} }
+    @user = @profile.user
   end
 
   def edit

@@ -2,7 +2,6 @@
 	%h3.col-xs-12= @student.name
 	%h3.col-xs-12.title-line2= @lesson.date.to_time.strftime("%a, %b %d, %Y")
 
-- if current_user.is_teacher?
 	.col-xs-12
 		= link_to 'New Assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
 		= link_to 'View Lesson Note', edit_lesson_note_path(@lesson.lesson_notes.first), class: 'btn btn-primary top-btn'

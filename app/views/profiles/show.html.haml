@@ -1,8 +1,16 @@
+%h3.col-xs-12= @user.name
 
-%div= flash[:notice] ? flash[:notice] : ''
-%div= "Instrument: #{@profile.instrument}"
-%div= "Age: #{@profile.age}"
-%div= "Gender:#{@profile.gender}"
-%div= "Bio: #{@profile.bio}"
+.col-xs-12.well.btn-well.clearfix.assignment-div
+	%h4 Instrument
+	.profile-content
+		= "#{@profile.instrument}"
+	%h4 Age
+	.profile-content
+		= "#{@profile.age}"
+	%h4 Gender
+	.profile-content
+		= "#{@profile.gender}"
+	%h4 Bio
+	%p.profile-content= "#{@profile.bio}"
 
-= link_to 'Edit', edit_profile_path(current_user), class: 'btn btn-warning'
+= button_to 'Edit', edit_profile_path(current_user), class: 'btn btn-secondary card-btn full-btn col-xs-6', method: :get
