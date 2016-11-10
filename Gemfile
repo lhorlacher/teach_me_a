@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'paperclip', '~> 5.1'
 
+gem 'aws-sdk', '~> 2'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.4.1'
 
