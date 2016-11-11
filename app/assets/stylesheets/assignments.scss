@@ -20,8 +20,18 @@
 	border-bottom-right-radius: 0;
 }
 
+.left-btn:hover {
+	border: 2px solid #e3e3e3;
+	border-top: 0;
+}
+
 .right-btn {
 	border-bottom-left-radius: 0;
+}
+
+.right-btn:hover {
+	border: 2px solid #e3e3e3;
+	border-top: 0;
 }
 
 .full-btn:hover {
@@ -44,5 +54,19 @@
 }
 
 .fill-div-space {
-	padding-bottom: 50px;
+	padding-bottom: 47px;
+}
+
+.btn-duplicate {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: transparent;
+	color: #C7C7C7;
+	border: none;
+}
+
+.btn-duplicate:hover {
+	background: #e3e3e3;
+
 }

@@ -2,7 +2,7 @@ class AssignmentsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :check_permissions, except: [:show]
 	before_action :set_lesson, only: [:new, :create]
-	before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+	before_action :set_assignment, only: [:show, :edit, :update, :destroy, :duplicate]
 
 	def show
 		@links = {header: 'Assignment'}
@@ -11,6 +11,16 @@ class AssignmentsController < ApplicationController
 	def new
 		@links = {header: 'New Assignment', nav_link: {display: 'To Lesson', url: "/lessons/#{@lesson.id}"}}
 		@assignment = @lesson.assignments.new
+	end
+
+	def duplicate
+		new_assignment = @assignment.duplicate
+		new_assignment.lesson_id = @assignment.lesson.next.id
+		if new_assignment.save
+			return 'OK'
+		else
+			return 'OK'
+		end
 	end
 
 	def create

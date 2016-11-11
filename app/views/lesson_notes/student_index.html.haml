@@ -4,10 +4,14 @@
 	%h3 No lesson notes to display.
 - else
 	- @lesson_notes.each_with_index do |lesson_note, index|
-		.col-xs-12.col-sm-6.col-md-4.clearfix
-			.well.btn-well.clearfix.assignment-div
+		.col-xs-12.col-sm-6.col-md-4
+			.well.btn-well.clearfix.assignment-div.col-xs-12.fill-div-space
 				%h3= lesson_note.lesson.date.to_time.strftime("%a, %b %d, %Y")
 				%p= lesson_note.notes
+				.practice-bar-divide
+				.assignment-div.fill-div.grad{:data => {fill: "#{lesson_note.fill}"}}
+				.fill-div-label
+					PRACTICES
 			=button_to 'Edit', edit_lesson_note_path(lesson_note), class: 'btn btn-secondary card-btn full-btn col-xs-6', method: :get
 		-if index.odd?
 			.col-xs-12

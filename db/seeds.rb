@@ -43,9 +43,10 @@ student_increment = 1
 
 		student_increment += 1
 
+		lesson_date_increment = 25
 		3.times do
 			lesson = Lesson.create(
-				date: Faker::Date.between(21.days.ago, Date.today),
+				date: Faker::Date.between(lesson_date_increment.days.ago, (lesson_date_increment - 1).days.ago),
 				feedback: Faker::Lorem.sentences(2),
 				rating: (1..5).to_a.sample,
 				student_id: student.id,
@@ -77,6 +78,7 @@ student_increment = 1
 					)
 				end
 			end
+			lesson_date_increment -= 7
 		end
 	end
 end

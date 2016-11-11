@@ -20,4 +20,11 @@ class Lesson < ApplicationRecord
 	end
 
 
+	def next
+		Lesson.where(student_id: student_id).where("id > ?", id).first
+	end
+
+	def previous
+		Lesson.where(student_id: student_id).where("id < ?", id).last
+	end
 end

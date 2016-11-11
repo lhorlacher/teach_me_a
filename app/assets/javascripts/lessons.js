@@ -73,6 +73,8 @@ $(document).on('turbolinks:load', function() {
 		chart.draw(data, options);
     }
 
+	$('select').selectpicker();
+
     $(window).resize(function(){
       drawLessonIndexChart()
     });

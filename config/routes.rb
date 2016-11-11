@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 	get '/students/:student_id/lesson_notes', to: 'lesson_notes#student_index', as: 'student_lesson_notes'
 
 	post '/assignments/:assignment_id/practices', to: 'practices#create', as: 'assignment_practices'
+	post '/assignments/:id/duplicate', to: 'assignments#duplicate', as: 'duplicate_assignment'
 
 	delete '/practices/:id', to: 'practices#destroy', as: 'practice'
 

@@ -1,10 +1,16 @@
 
 
 =form_for :lesson, {url: "/students/#{@student.id}/lessons"} do |f|
-	.form_group.col-xs-12
+	.form_group
 		=f.label :date
-		=f.date_field :date, required: true, :value => Time.now.strftime('%Y-%m-%d')
-	.form_group.col-xs-12
+		=f.text_field :date, required: true, :value => Time.now.strftime('%Y-%m-%d'), class: 'form-control '
+	.form_group
+		=f.label :rating, class: 'display-block'
+		=f.select :rating, options_for_select({'1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5 }), class: 'form-control'
+	.form_group
+		=f.label :feedback
+		=f.text_area :feedback, class: 'form-control'
+	.form_group
 		=f.submit class: 'btn btn-primary'
-	.div.col-xs-12
+	.div
 		%a.btn.btn-secondary{:href => "/students/#{@student.id}/lessons"} Cancel

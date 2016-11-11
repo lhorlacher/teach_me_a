@@ -1,10 +1,17 @@
+-if @lesson.previous
+	=button_to 'Previous lesson', lesson_path(@lesson.previous), class: 'btn btn-secondary pull-left', method: :get
+-if @lesson.next
+	=button_to 'Next lesson', lesson_path(@lesson.next), class: 'btn btn-secondary pull-right', method: :get
+-else
+	=button_to 'Add next lesson', new_student_lesson_path(@lesson.student_id), class: 'btn btn-primary pull-right', method: :get
 - if current_user.is_teacher?
 	%h3.col-xs-12= @student.name
 	%h3.col-xs-12.title-line2= @lesson.date.to_time.strftime("%a, %b %d, %Y")
 
 	.col-xs-12
 		= link_to 'New Assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
-		= link_to 'View Lesson Note', edit_lesson_note_path(@lesson.lesson_notes.first), class: 'btn btn-primary top-btn'
+		-if @lesson.lesson_notes.first
+			= link_to 'View Lesson Note', edit_lesson_note_path(@lesson.lesson_notes.first), class: 'btn btn-primary top-btn'
 	
 - if @assignments.length == 0
 	%h3 No assignments to display.
@@ -12,10 +19,16 @@
 	- @assignments.each_with_index do |assignment, index|
 		.col-xs-12.col-sm-6.col-md-6
 			.well.btn-well.clearfix.assignment-div.col-xs-12.fill-div-space
+				-if @lesson.next
+					-unless @lesson.next.next
+						=button_to 'Add to next lesson', duplicate_assignment_path(assignment.id), class: 'btn btn-primary pull-right btn-duplicate'
 				%h3= "#{assignment.book} p#{assignment.page}"
 				%p= "Goal: #{assignment.per_day} times on #{assignment.per_week} days"
 				%p= "Instructions: #{assignment.instruction}"
+				.practice-bar-divide
 				.assignment-div.fill-div.grad{:data => {fill: "#{assignment.fill}"}}
+				.fill-div-label
+					PRACTICES
 
 			- if current_user.is_student?
 				=button_to 'Played!', assignment_practices_path(assignment.id), class: 'btn btn-primary card-btn full-btn played-btn', form: { 'data-id' => "#{assignment.id}", class: 'played-form' } 

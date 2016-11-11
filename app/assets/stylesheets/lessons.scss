@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .fill-div {
-	height: 45px;
+	height: 46px;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 	border-top-right-radius: 4px;
@@ -11,16 +11,33 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	padding: 0px;
-	border-top: 1px solid black;
-	border-right: 1px solid black;
-	box-shadow: 3px 0px 3px black;
 }
 
 .grad {
-  background: #286090; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left, #286090 , #9bc2e4); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right, #286090, #9bc2e4); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right, #286090, #9bc2e4); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right, #286090 , #9bc2e4); /* Standard syntax */
+  background: #E8EEF3; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #E8EEF3 , #88A2BB); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #E8EEF3, #88A2BB); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #E8EEF3, #88A2BB); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #E8EEF3 , #88A2BB); /* Standard syntax */
+}
+
+.practice-bar-divide {
+	border-bottom: 1px solid gray;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+.fill-div-label {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: transparent;
+	text-align: center;
+	line-height: 46px;
+}
+
+.display-block {
+	display: block;
 }

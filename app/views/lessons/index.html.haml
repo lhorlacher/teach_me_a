@@ -13,10 +13,10 @@
 	%h3 No lessons to display.
 	%h3= link_to 'Create one here.', new_student_lesson_path(@student)
 - else
-	- @lessons.each do |lesson|
+	- @lessons.each_with_index do |lesson, i|
 		.col-xs-12.col-sm-6.col-md-4
 			%a{:href => "/lessons/#{lesson.id}", :class => 'list-item-link'}
-				.well
+				.well.btn-well.clearfix.assignment-div
 					%h3= lesson.date.to_time.strftime("%a, %b %d, %Y")
 					- list = ''
 					- lesson.assignments.each do |assign|
@@ -24,4 +24,10 @@
 					%h4
 						= "#{list[0..-3]}"
 					%p= "#{lesson.feedback[0..75]}" if lesson.feedback
-
+			-if current_user.teacher
+				=button_to 'Edit', edit_lesson_path(lesson.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
+				=button_to 'Delete', lesson_path(lesson.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :delete, data: {confirm: "Are you sure?"}
+		- if i.odd?
+			.hidden-xs.col-sm-12.hidden-md
+		- if (i + 1) % 3 == 0
+			.col-md-12.hidden-sm.hidden-xs.hidden-lg
