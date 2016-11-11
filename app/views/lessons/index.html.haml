@@ -1,10 +1,10 @@
 - if current_user.is_teacher?
-	.col-xs-12.col-md-3
+	.col-xs-12
 		%h3= @student.name
 		=link_to 'New Lesson', new_student_lesson_path(@student), class: 'btn btn-primary top-btn'
 
 
-.col-xs-12.col-md-9.no-padding.well
+.col-xs-12.no-padding.well
 	#lessons-chart-div.full-width
 		= @performance
 

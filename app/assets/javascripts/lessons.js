@@ -66,7 +66,7 @@ $(document).on('turbolinks:load', function() {
         );
 
 		// Set chart options
-		var options = { vAxis: {minValue: 0, maxValue: 100}, legend: {position: 'bottom'}, chartArea: {right: '2px', width: '80%'}, title: {} }
+		var options = { vAxis: {minValue: 0, maxValue: 100}, legend: {position: 'bottom'}, chartArea: {right: '2px', width: '80%'} }
 
 		// Instantiate and draw our chart, passing in some options.
 		var chart = new google.visualization.LineChart(document.getElementById('lessons-chart-div'));
