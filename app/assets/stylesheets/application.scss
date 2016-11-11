@@ -21,6 +21,14 @@ body {
     border: 0;
 }
 
+.full-width {
+	width: 100%;
+	min-height: 400px;
+}
+
+.no-padding {
+	padding: 0;
+}
 
 .list-item-inner {
 	box-shadow: 0px 0px 0px #888888;

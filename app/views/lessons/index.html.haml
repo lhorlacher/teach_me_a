@@ -1,10 +1,13 @@
 - if current_user.is_teacher?
-	.col-xs-12
+	.col-xs-12.col-md-3
 		%h3= @student.name
-
-- if current_user.is_teacher?
-	.col-xs-12
 		=link_to 'New Lesson', new_student_lesson_path(@student), class: 'btn btn-primary top-btn'
+
+
+.col-xs-12.col-md-9.no-padding.well
+	#lessons-chart-div.full-width
+		= @performance
+
 	
 - if @lessons == 0
 	%h3 No lessons to display.

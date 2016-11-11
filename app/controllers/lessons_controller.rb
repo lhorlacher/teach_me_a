@@ -6,6 +6,7 @@ class LessonsController < ApplicationController
 
 	def index
 		@lessons = @student.lessons.includes(:assignments).order('date DESC')
+		@performance = Lesson.historical_performance(@student.id).to_json
 		@links = {header: 'Lessons', 
 			nav_link: current_user.teacher ? {display: 'To Students', url: '/students'} : nil}
 	end
