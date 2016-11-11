@@ -2,11 +2,13 @@
 	=button_to 'Previous lesson', lesson_path(@lesson.previous), class: 'btn btn-secondary pull-left', method: :get
 -if @lesson.next
 	=button_to 'Next lesson', lesson_path(@lesson.next), class: 'btn btn-secondary pull-right', method: :get
--else
+-elsif current_user.teacher
 	=button_to 'Add next lesson', new_student_lesson_path(@lesson.student_id), class: 'btn btn-primary pull-right', method: :get
 - if current_user.is_teacher?
 	%h3.col-xs-12= @student.name
 	%h3.col-xs-12.title-line2= @lesson.date.to_time.strftime("%a, %b %d, %Y")
+-else
+	%br
 
 	.col-xs-12
 		= link_to 'New Assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
