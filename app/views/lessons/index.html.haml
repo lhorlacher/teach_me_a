@@ -3,10 +3,10 @@
 		%h3= @student.name
 		=link_to 'New Lesson', new_student_lesson_path(@student), class: 'btn btn-primary top-btn'
 
-
-.col-xs-12.no-padding.well
-	#lessons-chart-div.full-width
-		= @performance
+- if current_user.teacher
+	.col-xs-12.no-padding.well
+		#lessons-chart-div.full-width
+			= @performance
 
 	
 - if @lessons == 0
