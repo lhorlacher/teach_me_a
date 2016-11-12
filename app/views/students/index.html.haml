@@ -6,15 +6,19 @@
 		.col-xs-12.col-sm-6
 			%a{:href => "/students/#{student.id}/lessons", :class => 'list-item-link'}
 				.well.btn-well.clearfix.assignment-div
-					- if student.profile.profile_picture.url !~ /.*missing.*/
-						.col-xs-12.col-sm-4.profile-picture-div.center
-							= image_tag(student.profile.profile_picture.url(:thumb))
-					.col-xs-12.col-sm-8
-						%h3= student.name
-						%p= "Birthday: #{student.profile.birthday} | Gender: #{student.profile.gender}"
-						%p= "Instrument: #{student.profile.instrument}"
+					- if student.profile
+						- if student.profile.profile_picture.url !~ /.*missing.*/
+							.col-xs-12.col-sm-4.profile-picture-div.center
+								= image_tag(student.profile.profile_picture.url(:thumb))
+						.col-xs-12.col-sm-8
+							%h3= student.name
+							%p= "Birthday: #{student.profile.birthday} | Gender: #{student.profile.gender}"
+							%p= "Instrument: #{student.profile.instrument}"
 
-			=button_to 'View Profile', profile_path(student.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
+			-if student.profile
+				=button_to 'View Profile', profile_path(student.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
+			-else
+				=button_to 'Add Profile', new_user_profile_path(student.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
 			=button_to 'History', student_lesson_notes_path(student.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :get
 		- if i.odd? 
 			.col-xs-12.col-md-0

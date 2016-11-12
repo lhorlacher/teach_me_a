@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_profile, only: [:show, :edit, :update]
+  before_action :set_user, only: [:new, :create]
 
   def show
     @links = {header: 'Profile',
@@ -28,10 +29,10 @@ class ProfilesController < ApplicationController
   end
 
   def create
-  	@profile = current_user.build_profile(profile_params)
+  	@profile = @user.build_profile(profile_params)
   	if @profile.save
       flash[:notice] = "Profile created successfully"
-  		redirect_to profile_path(current_user.profile.id)
+  		redirect_to profile_path(@profile.id)
   	else
       flash[:warn] = "Profile not created"
   		render :new
@@ -41,8 +42,12 @@ class ProfilesController < ApplicationController
   private
 
 	  def profile_params
-	  	params.require(:profile).permit(:name, :instrument, :birthday, :gender, :bio, :user_id, :profile_picture)
+	  	params.require(:profile).permit(:name, :instrument, :birthday, :gender, :bio, :profile_picture)
 	  end
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
 
 	  def set_profile
 	  	@profile = Profile.find(params[:id])

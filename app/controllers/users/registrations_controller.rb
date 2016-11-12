@@ -22,7 +22,10 @@ skip_before_action :require_no_authentication, only: [:new, :create]
       if current_user
         if current_user.teacher
           resource.teacher = false
+          resource.teacher_id = current_user.id
+          resource.save
         end
+        return redirect_to new_user_profile_path(resource)
       end
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
@@ -78,7 +81,7 @@ skip_before_action :require_no_authentication, only: [:new, :create]
 
  # The path used after sign up.
   def after_sign_up_path_for(resource)
-    new_profile_path(current_user)
+    new_user_profile_path(resource)
   end
 
   # The path used after sign up for inactive accounts.
@@ -89,7 +92,7 @@ skip_before_action :require_no_authentication, only: [:new, :create]
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :teacher, :name, :profile_picture)
+    params.require(:user).permit(:email, :password, :password_confirmation, :teacher, :name, :profile_picture, :teacher_id)
   end
 
   def account_update_params

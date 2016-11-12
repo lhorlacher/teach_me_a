@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
 	resources :teachers
 
-	resources :profiles
+	resources :users do 
+		resources :profiles, shallow: true
+	end
 
 	resources :students do
 		resources :lessons, shallow: true do
