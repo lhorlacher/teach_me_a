@@ -55,28 +55,31 @@ $(document).on('turbolinks:load', function() {
 // LESSON INDEX PAGE
 	google.charts.load('current', {'packages':['corechart']});
 
-	var chartData = JSON.parse(document.getElementById('lessons-chart-div').innerHTML)
 
-	google.charts.setOnLoadCallback(drawLessonIndexChart);
+	if ($("#lessons-chart-div").length) {
+		var chartData = JSON.parse(document.getElementById('lessons-chart-div').innerHTML)
 
-	function drawLessonIndexChart() {
-        // Create the data table.
-        var data = new google.visualization.arrayToDataTable(
-			chartData
-        );
+		google.charts.setOnLoadCallback(drawLessonIndexChart);
 
-		// Set chart options
-		var options = { vAxis: {minValue: 0, maxValue: 100}, legend: {position: 'bottom'}, chartArea: {right: '2px', width: '80%'} }
+		function drawLessonIndexChart() {
+	        // Create the data table.
+	        var data = new google.visualization.arrayToDataTable(
+				chartData
+	        );
 
-		// Instantiate and draw our chart, passing in some options.
-		var chart = new google.visualization.LineChart(document.getElementById('lessons-chart-div'));
-		chart.draw(data, options);
-    }
+			// Set chart options
+			var options = { vAxis: {minValue: 0, maxValue: 100}, legend: {position: 'bottom'}, chartArea: {right: '2px', width: '80%'} }
+
+			// Instantiate and draw our chart, passing in some options.
+			var chart = new google.visualization.LineChart(document.getElementById('lessons-chart-div'));
+			chart.draw(data, options);
+	    }
+
+	    $(window).resize(function(){
+	      drawLessonIndexChart()
+	    });
+	}
 
 	$('select').selectpicker();
-
-    $(window).resize(function(){
-      drawLessonIndexChart()
-    });
 
 })
