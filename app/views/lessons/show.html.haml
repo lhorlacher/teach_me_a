@@ -1,19 +1,19 @@
--if @lesson.previous
-	=button_to 'Previous lesson', lesson_path(@lesson.previous), class: 'btn btn-secondary pull-left', method: :get
--if @lesson.next
-	=button_to 'Next lesson', lesson_path(@lesson.next), class: 'btn btn-secondary pull-right', method: :get
--elsif current_user.teacher
-	=button_to 'Add next lesson', new_student_lesson_path(@lesson.student_id), class: 'btn btn-primary pull-right', method: :get
+.col-xs-12
+	-if @lesson.previous
+		=button_to 'Previous', lesson_path(@lesson.previous), class: 'btn btn-secondary pull-left', method: :get
+	-if @lesson.next
+		=button_to 'Next', lesson_path(@lesson.next), class: 'btn btn-secondary pull-right', method: :get
+	-elsif current_user.teacher
+		=button_to 'Add next lesson', new_student_lesson_path(@lesson.student_id), class: 'btn btn-primary pull-right', method: :get
 - if current_user.is_teacher?
 	%h3.col-xs-12= @student.name
 	%h3.col-xs-12.title-line2= @lesson.date.to_time.strftime("%a, %b %d, %Y")
--else
-	%br
-
 	.col-xs-12
 		= link_to 'New Assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
 		-if @lesson.lesson_notes.first
 			= link_to 'View Lesson Note', edit_lesson_note_path(@lesson.lesson_notes.first), class: 'btn btn-primary top-btn'
+- else
+	%hr
 	
 - if @assignments.length == 0
 	%h3 No assignments to display.

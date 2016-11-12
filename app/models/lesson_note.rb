@@ -12,6 +12,7 @@ class LessonNote < ApplicationRecord
 			total_count += assignment.per_day * assignment.per_week
 		end
 		percent = lesson.practices.count.to_f / total_count.to_f * 100
+		percent <= 100 ? percent : 100
 	end
 
 end

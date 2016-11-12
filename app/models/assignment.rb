@@ -7,7 +7,7 @@ class Assignment < ApplicationRecord
 		count = self.practices.count
 		needed = self.per_day * self.per_week
 		percent = (count.to_f / needed.to_f * 100).to_i
-		percent <= 100 ? percent : 100
+		return (percent <= 100 ? percent : 100)
 	end
 
 	def duplicate

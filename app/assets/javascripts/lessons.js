@@ -41,7 +41,7 @@ $(document).on('turbolinks:load', function() {
 
 	$(".played-form").submit(function(e) {
 		e.preventDefault()
-		fillDiv = e.target.parentElement.children[0].children[3]
+		fillDiv = e.target.parentElement.children[0].children[4]
 		$.ajax({
 			url: '/assignments/' + e.target.dataset.id + '/practices',
 			type: 'POST'
@@ -81,5 +81,9 @@ $(document).on('turbolinks:load', function() {
 	}
 
 	$('select').selectpicker();
+
+
+	// RESTORE COMPLETE WELL IF BUTTONS NOT PRESENT
+	($('.card-btn').length) ? console.log('Yes buttons!') : ($('div').removeClass( 'btn-well' ).addClass( 'top-margin' ));
 
 })

@@ -11,6 +11,10 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
+hr {
+	margin-bottom: 30px;
+}
+
 .page-header {
 	width: 20vh;
     position: absolute;
@@ -25,6 +29,10 @@ body {
 .full-width {
 	width: 100%;
 	min-height: 400px;
+}
+
+.top-margin {
+	margin-top: 10px;
 }
 
 .no-padding {

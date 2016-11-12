@@ -28,6 +28,6 @@
 				=button_to 'Edit', edit_lesson_path(lesson.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
 				=button_to 'Delete', lesson_path(lesson.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :delete, data: {confirm: "Are you sure?"}
 		- if i.odd?
-			.hidden-xs.col-sm-12.hidden-md
+			.hidden-xs.col-sm-12.hidden-md{ :class => ('wide' if current_user.is_student?) }
 		- if (i + 1) % 3 == 0
-			.col-md-12.hidden-sm.hidden-xs.hidden-lg
+			.col-md-12.hidden-sm.hidden-xs.hidden-lg{ :class => ('wide' if current_user.is_student?) }
