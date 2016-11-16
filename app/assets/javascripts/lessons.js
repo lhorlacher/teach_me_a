@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function() {
 // LESSON SHOW/ASSIGNMENT INDEX PAGE
 	fillDivs.map(function(i, div) {
 		setWidth(div)
-		setColor(div, i)
+		setColor(div)
 	})
 
 	function setWidth(div) {
@@ -19,11 +19,19 @@ $(document).on('turbolinks:load', function() {
 	}
 
 	function setWidthAjax(div, width) {
+		console.log(div)
+		console.log(width)
 		div.style.width = width + '%'
 	}
 
-	function setColor(div, i) {
-		div.style.backgroundColor = colors[i % colors.length]
+	function setColor(div) {
+		if (div.style.width === '100%'){
+			var $div = $(div)
+			console.log('heyo')
+			$div.removeClass('grad')
+			$div.addClass('green')
+			div.nextElementSibling.innerHTML = 'COMPLETE'
+		}
 	}
 
 	function setActive() {
@@ -41,12 +49,13 @@ $(document).on('turbolinks:load', function() {
 
 	$(".played-form").submit(function(e) {
 		e.preventDefault()
-		fillDiv = e.target.parentElement.children[0].children[4]
+		fillDiv = e.target.parentElement.children[0].children[5]
 		$.ajax({
 			url: '/assignments/' + e.target.dataset.id + '/practices',
 			type: 'POST'
 		}).done( function(response) {
 			setWidthAjax(fillDiv, response.fill)
+			setColor(fillDiv)
 			setDisabled()
 
 		})
@@ -84,6 +93,6 @@ $(document).on('turbolinks:load', function() {
 
 
 	// RESTORE COMPLETE WELL IF BUTTONS NOT PRESENT
-	($('.card-btn').length) ? console.log('Yes buttons!') : ($('div').removeClass( 'btn-well' ).addClass( 'top-margin' ));
+	($('.card-btn').length) ? null : ($('div').removeClass( 'btn-well' ).addClass( 'top-margin' ));
 
 })
