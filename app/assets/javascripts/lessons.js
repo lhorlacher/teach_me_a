@@ -49,7 +49,8 @@ $(document).on('turbolinks:load', function() {
 
 	$(".played-form").submit(function(e) {
 		e.preventDefault()
-		fillDiv = e.target.parentElement.children[0].children[5]
+		fillDiv = $(e.target.parentElement).find($('.fill-div'))[0]
+		console.log(fillDiv)
 		$.ajax({
 			url: '/assignments/' + e.target.dataset.id + '/practices',
 			type: 'POST'

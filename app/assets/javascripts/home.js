@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
 
 	function setAssignmentHeights() {
 		var wellHeight = '0px';
-		var allDone = 0
+		var allDone = 0;
 
 		$(".btn-well").each(function(i, div){
 		   if (toNum($(this).css('height')) > toNum(wellHeight)) { 
