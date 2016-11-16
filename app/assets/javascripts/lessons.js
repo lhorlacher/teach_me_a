@@ -62,6 +62,10 @@ $(document).on('turbolinks:load', function() {
 		})
 	})
 
+	$('.complete').click(function(e) {
+		$('#mark-complete-modal').removeClass('no-show')
+	}
+
 // LESSON INDEX PAGE
 	google.charts.load('current', {'packages':['corechart']});
 

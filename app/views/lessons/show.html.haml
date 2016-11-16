@@ -12,6 +12,8 @@
 		= link_to 'New Assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
 		-if @lesson.lesson_notes.first
 			= link_to 'View Lesson Note', edit_lesson_note_path(@lesson.lesson_notes.first), class: 'btn btn-primary top-btn'
+		-if @lesson.assignments.any?
+			%button.btn.btn-primary.top-btn.complete Lesson Complete
 - else
 	%hr
 	
