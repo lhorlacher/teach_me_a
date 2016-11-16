@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
 	delete '/practices/:id', to: 'practices#destroy', as: 'practice'
 
+	patch '/lessons/:id/rating', to: 'lessons#update_rating'
+
 
 
 

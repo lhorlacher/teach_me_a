@@ -1,0 +1,8 @@
+.inner-modal
+	=form_for @lesson, html: {action: '/lessons/#{@lesson.id}/rating', method: 'patch', class: 'complete-form', data: {lesson_id: @lesson.id}} do |f|
+		.form_group
+			=f.label :rating
+			=f.number_field :rating, max: 5, min: 1, placeholder: 'Number 1 - 5', class: 'rating-value'
+		%br
+		=f.submit 'Add Rating', class: 'btn btn-primary'
+	%button.cancel-modal.btn.btn-secondary Cancel

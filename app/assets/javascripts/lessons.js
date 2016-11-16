@@ -62,9 +62,31 @@ $(document).on('turbolinks:load', function() {
 		})
 	})
 
-	$('.complete').click(function(e) {
-		$('#mark-complete-modal').removeClass('no-show')
+	function closeModal() {
+		$('.outer-modal').addClass('no-show')
 	}
+
+	$('.complete-btn').click(function(e) {
+		$('.complete').removeClass('no-show')
+	})
+
+	$('.cancel-modal').click(function(e) {
+		closeModal()
+	})
+
+	$('.complete-form').submit(function(e) {
+		e.preventDefault()
+		var id = $('.complete-form')[0].dataset.lessonId
+		var rating = $('#lesson_rating')[0].value
+		$.ajax({
+			url: '/lessons/' + id + '/rating',
+			type: 'PATCH',
+			data: {lesson: {lesson_id: id, rating: rating}}
+		}).done( function(response){
+			closeModal()
+			console.log(response)
+		})
+	});
 
 // LESSON INDEX PAGE
 	google.charts.load('current', {'packages':['corechart']});

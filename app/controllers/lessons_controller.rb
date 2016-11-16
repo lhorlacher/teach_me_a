@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :check_permissions, except: [:index, :show]
 	before_action :set_student, only: [:index, :new, :create, :destroy]
-	before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+	before_action :set_lesson, only: [:show, :edit, :update, :destroy, :update_rating]
 
 	def index
 		@lessons = @student.lessons.includes(:assignments).order('date DESC')
@@ -44,6 +44,14 @@ class LessonsController < ApplicationController
 		else
 			render :edit
 			redirect_to lesson_path(@lesson)
+		end
+	end
+
+	def update_rating
+		if @lesson.update(lesson_params)
+			redirect_to lesson_path(@lesson)
+		else
+			render :show
 		end
 	end
 
