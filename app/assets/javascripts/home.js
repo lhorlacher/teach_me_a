@@ -24,7 +24,5 @@ $(document).on('turbolinks:load', function() {
 			return Number(array.join(''))
 		}
 	}
-
 	setAssignmentHeights()
-
 });
