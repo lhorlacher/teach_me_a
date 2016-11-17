@@ -22,8 +22,8 @@
 					- lesson.assignments.each do |assign|
 						- list += "#{assign.book}: p#{assign.page}, "
 					%h4
-						= "#{list[0..-3]}"
-					%p= "#{lesson.feedback[0..75]}" if lesson.feedback
+						= list.length > 50 ? "#{list[0..45]}. . ." : "#{list[0..-3]}"
+					%p= "Feedback: #{lesson.feedback[0..75]}" if lesson.feedback
 			-if current_user.teacher
 				=button_to 'Edit', edit_lesson_path(lesson.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
 				=button_to 'Delete', lesson_path(lesson.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :delete, data: {confirm: "Are you sure?"}

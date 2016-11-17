@@ -1,4 +1,5 @@
 -teacher = current_user.is_teacher?
+-rating = @lesson.rating
 
 .col-xs-12
 	-if @lesson.previous
@@ -8,22 +9,33 @@
 	-elsif teacher
 		=button_to 'Add next lesson', new_student_lesson_path(@lesson.student_id), class: 'btn btn-primary pull-right', method: :get
 - if teacher
-	%h3.col-xs-12= @student.name
-	%h3.col-xs-12.title-line2= @lesson.date.to_time.strftime("%a, %b %d, %Y")
-	.col-xs-12
-		= link_to 'New Assignment', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
+	%h3.col-xs-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2= @student.name
+	%h3.col-xs-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2.title-line2= @lesson.date.to_time.strftime("%a, %b %d, %Y")
+	.col-xs-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
+		= link_to 'New', new_lesson_assignment_path(@lesson), class: 'btn btn-primary top-btn'
 		-if @lesson.lesson_notes.first
-			= link_to 'View Lesson Note', edit_lesson_note_path(@lesson.lesson_notes.first), class: 'btn btn-primary top-btn'
+			= link_to 'Notes', edit_lesson_note_path(@lesson.lesson_notes.first), class: 'btn btn-primary top-btn'
 		-if @lesson.assignments.any?
-			%button.btn.btn-primary.top-btn.complete-btn Lesson Complete
+			%button.btn.btn-primary.top-btn.complete-btn Grade
 - else
 	%hr
+
+.col-xs-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2.star-rating
+	-5.times do |i|
+		-i += 1
+		-if i <= rating
+			%span.glyphicon.glyphicon-star
+		-else
+			%span.glyphicon.glyphicon-star-empty
+
+.col-xs-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2.feedback
+	%p= "Overall Feedback: #{@lesson.feedback}"
 	
 - if @assignments.length == 0
 	%h3 No assignments to display.
 - else
 	- @assignments.each_with_index do |assignment, index|
-		.col-xs-12.col-sm-6.col-md-6
+		.col-xs-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
 			.well.btn-well.clearfix.assignment-div.col-xs-12.fill-div-space
 				-if teacher
 					-if @lesson.next
@@ -42,9 +54,6 @@
 			- else
 				=button_to 'Edit', edit_assignment_path(assignment.id), class: 'btn btn-secondary card-btn left-btn col-xs-6', method: :get
 				=button_to 'Delete', assignment_path(assignment.id), class: 'btn btn-secondary card-btn right-btn col-xs-6', method: :delete, data: {confirm: "Are you sure?"}
-			
-		-if index.odd?
-			.col-xs-12
 
 .complete.outer-modal.no-show
 	=render(partial: 'complete_modal')
